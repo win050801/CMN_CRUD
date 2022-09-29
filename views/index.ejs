@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <form id="create" method="POST" action="/update" enctype="multipart/form-data">
+            <input type="number" name="ma_sp" placeholder="Ma SP" />
+            <input type="text" name="ten_sp" placeholder="Ten SP" />
+            <input type="number" name="so_luong" placeholder="So Luong" />
+            <input type="submit" value="Submit" />
+        </form>
+        
+        <table border="1">
+            <tr>
+                <th>Ma SP</th>
+                <th>Ten SP</th>
+                <th>So Luong</th>
+                <th>Hinh anh</th>
+                <th>Chon</th>
+            </tr>
+            <% for (let i = 0 ; i <sanPhams.length;i++ ){%>
+            <tr>
+                <td><%= sanPhams[i].ma_sp%></td>
+                <td><%= sanPhams[i].ten_sp%></td>
+                <td><%= sanPhams[i].so_luong%></td>
+                <td></td>
+                <td>
+                    <form id="delete" method="POST" action="/delete" enctype="multipart/form-data">
+                        <input type="hidden" name="ma_sp" value="<%= sanPhams[i].ma_sp%>" />
+                        <input type="submit" value="Xoa"/>
+                    </form>
+                </td>
+
+            </tr>
+            <%} %>
+        </table>
+    </div>
+    
+</body>
+</html>
